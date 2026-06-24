@@ -1,0 +1,36 @@
+.next
+node_modules
+out
+.vercel
+*.log
+.env*.local
+
+# Build and TypeScript cache
+dist/
+build/
+coverage/
+*.tsbuildinfo
+
+# Local runtime files
+*.pid
+tmp/
+outputs/
+
+# Generated/rendered media and large local assets
+*.avi
+*.mp4
+*.mov
+*.webm
+!public/zd-site/**/*.mp4
+!public/zd-site/**/*.webm
+*.pptx
+*.docx
+watermark_*.png
+RCP_*.png
+lamp_webm_recorder.html
+lamp_ppt_video_assets/
+whatsapp_*_render/
+
+# Local tooling/dependency caches
+pydeps/
+.tools/
