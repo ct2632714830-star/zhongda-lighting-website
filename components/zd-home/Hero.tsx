@@ -4,7 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { motion, useScroll, useTransform } from "framer-motion";
 import { ArrowRight, ChevronLeft, ChevronRight } from "lucide-react";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useI18n } from "@/components/LanguageProvider";
 import { assetPaths, homeContent } from "@/lib/zd-home-content";
 
@@ -36,6 +36,7 @@ export function Hero() {
   const { locale } = useI18n();
   const t = homeContent[locale];
   const [activeSlide, setActiveSlide] = useState(0);
+  const videoRefs = useRef<(HTMLVideoElement | null)[]>([]);
   const { scrollYProgress } = useScroll();
   const y = useTransform(scrollYProgress, [0, 0.55], [0, 120]);
   const scale = useTransform(scrollYProgress, [0, 0.55], [1, 1.08]);
@@ -46,6 +47,18 @@ export function Hero() {
     }, 6800);
     return () => window.clearInterval(timer);
   }, []);
+
+  useEffect(() => {
+    const activeVideo = videoRefs.current[activeSlide];
+    if (!activeVideo) return;
+
+    activeVideo.muted = true;
+    activeVideo.playsInline = true;
+    activeVideo.load();
+    void activeVideo.play().catch(() => {
+      // Some mobile browsers wait for user interaction before playing video.
+    });
+  }, [activeSlide]);
 
   const showPrevious = () => setActiveSlide((current) => (current - 1 + heroSlides.length) % heroSlides.length);
   const showNext = () => setActiveSlide((current) => (current + 1) % heroSlides.length);
@@ -72,11 +85,15 @@ export function Hero() {
               />
             ) : (
               <video
+                ref={(element) => {
+                  videoRefs.current[index] = element;
+                }}
                 className="h-full w-full object-cover"
                 autoPlay
                 muted
                 loop
                 playsInline
+                preload="auto"
                 poster={slide.poster}
                 aria-label={slide.alt}
               >

@@ -1,5 +1,6 @@
 "use client";
 
+import { useEffect, useRef } from "react";
 import { useI18n } from "@/components/LanguageProvider";
 import { homeContent } from "@/lib/zd-home-content";
 import { Reveal } from "@/components/zd-home/Reveal";
@@ -30,6 +31,16 @@ const brands = [
 export function TrustedBrandsSection() {
   const { locale } = useI18n();
   const t = homeContent[locale];
+  const videoRef = useRef<HTMLVideoElement | null>(null);
+
+  useEffect(() => {
+    const video = videoRef.current;
+    if (!video) return;
+
+    video.muted = true;
+    video.playsInline = true;
+    void video.play().catch(() => {});
+  }, []);
 
   return (
     <section className="relative overflow-hidden bg-warmwhite pb-0 pt-10 md:pt-16">
@@ -37,13 +48,14 @@ export function TrustedBrandsSection() {
         <Reveal>
           <div className="relative min-h-[760px] overflow-hidden rounded-t-[2.8rem] border border-white/70 bg-zinc-950 shadow-[0_-10px_90px_rgba(38,34,28,.12)] md:min-h-[820px]">
             <video
+              ref={videoRef}
               className="absolute inset-0 h-full w-full object-cover opacity-86"
               src="/zd-site/videos/trusted-hospitality-brands.mp4"
               autoPlay
               muted
               loop
               playsInline
-              preload="metadata"
+              preload="auto"
             />
 
             <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(246,244,239,.20)_0%,rgba(11,10,9,.08)_32%,rgba(11,10,9,.72)_100%)]" />

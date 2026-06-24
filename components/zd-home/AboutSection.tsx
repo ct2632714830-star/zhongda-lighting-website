@@ -1,5 +1,6 @@
 "use client";
 
+import { useEffect, useRef } from "react";
 import { useI18n } from "@/components/LanguageProvider";
 import { homeContent } from "@/lib/zd-home-content";
 import { Reveal } from "@/components/zd-home/Reveal";
@@ -7,6 +8,18 @@ import { Reveal } from "@/components/zd-home/Reveal";
 export function AboutSection() {
   const { locale } = useI18n();
   const t = homeContent[locale];
+  const videoRef = useRef<HTMLVideoElement | null>(null);
+
+  useEffect(() => {
+    const video = videoRef.current;
+    if (!video) return;
+
+    video.muted = true;
+    video.playsInline = true;
+    void video.play().catch(() => {
+      // Controls remain available when the browser delays autoplay.
+    });
+  }, []);
 
   return (
     <section id="about" className="relative overflow-hidden bg-warmwhite py-24 md:py-32">
@@ -30,6 +43,7 @@ export function AboutSection() {
         <Reveal delay={0.1}>
           <div className="overflow-hidden rounded-[2.4rem] border border-black/10 bg-white shadow-[0_30px_100px_rgba(20,20,20,.12)]">
             <video
+              ref={videoRef}
               className="aspect-[1.575] w-full bg-black object-contain"
               src="/zd-site/videos/about-light-craft.mp4"
               autoPlay
@@ -37,7 +51,7 @@ export function AboutSection() {
               loop
               playsInline
               controls
-              preload="metadata"
+              preload="auto"
               aria-label="Zhongda Lighting craftsmanship video"
             />
             <div className="bg-white/88 p-6 backdrop-blur-xl">
