@@ -60,6 +60,16 @@ export function Navigation() {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
+  useEffect(() => {
+    if (!open) return;
+
+    const originalOverflow = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+    return () => {
+      document.body.style.overflow = originalOverflow;
+    };
+  }, [open]);
+
   return (
     <header
       className={`fixed left-0 top-0 z-50 w-full transition-all duration-500 ${
@@ -120,27 +130,59 @@ export function Navigation() {
       </nav>
 
       {open ? (
-        <div className="fixed inset-x-0 top-16 max-h-[calc(100vh-4rem)] overflow-y-auto border-t border-black/10 bg-white/92 px-6 py-8 shadow-2xl backdrop-blur-2xl md:top-20 md:max-h-[calc(100vh-5rem)] lg:hidden">
-          {navItems.map(([id]) => (
-            <Link
-              key={id}
-              href={`/#${id}`}
+        <div className="fixed inset-0 z-[60] isolate text-zinc-950 lg:hidden" style={{ backgroundColor: "#fff" }}>
+          <div className="flex h-16 items-center justify-between border-b border-zinc-200 px-5">
+            <div className="flex items-center gap-3">
+              <span className="relative h-10 w-10 overflow-hidden rounded-full bg-white shadow-[0_8px_24px_rgba(0,0,0,.10)]">
+                <Image src={assetPaths.logo} alt="Zhongda Lighting logo" fill sizes="40px" className="object-cover" priority />
+              </span>
+              <span>
+                <span className="block text-sm font-semibold text-zinc-950">Zhongda Lighting</span>
+                <span className="mt-1 block text-[10px] uppercase tracking-[0.22em] text-zinc-500">Bespoke Studio</span>
+              </span>
+            </div>
+            <button
+              type="button"
               onClick={() => setOpen(false)}
-              className="block border-b border-black/10 py-5 text-4xl font-semibold tracking-[-0.04em] text-zinc-950 last:border-b-0"
+              className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-zinc-200 bg-zinc-50 text-zinc-950"
+              aria-label="Close menu"
             >
-              {navLabels[id][locale]}
-            </Link>
-          ))}
-          {pageNavItems.map((item) => (
+              <X className="size-5" />
+            </button>
+          </div>
+
+          <div className="h-[calc(100svh-4rem)] overflow-y-auto px-5 py-5">
+            <div className="divide-y divide-zinc-200 rounded-[1.5rem] border border-zinc-200 bg-white shadow-[0_24px_80px_rgba(20,20,20,.08)]">
+              {navItems.map(([id]) => (
+                <Link
+                  key={id}
+                  href={`/#${id}`}
+                  onClick={() => setOpen(false)}
+                  className="flex min-h-14 items-center px-5 py-4 text-[clamp(1.25rem,6vw,1.9rem)] font-semibold leading-tight tracking-[-0.03em] text-zinc-950"
+                >
+                  {navLabels[id][locale]}
+                </Link>
+              ))}
+              {pageNavItems.map((item) => (
+                <Link
+                  key={item.href}
+                  href={item.href}
+                  onClick={() => setOpen(false)}
+                  className="flex min-h-14 items-center px-5 py-4 text-[clamp(1.05rem,5vw,1.5rem)] font-semibold leading-tight tracking-[-0.025em] text-zinc-950"
+                >
+                  {item.label[locale]}
+                </Link>
+              ))}
+            </div>
+
             <Link
-              key={item.href}
-              href={item.href}
+              href="/#contact"
               onClick={() => setOpen(false)}
-              className="block border-b border-black/10 py-5 text-3xl font-semibold leading-tight tracking-[-0.04em] text-zinc-950 last:border-b-0"
+              className="mt-5 flex h-12 items-center justify-center rounded-full bg-zinc-950 px-5 text-sm font-medium text-white shadow-[0_18px_50px_rgba(0,0,0,.18)]"
             >
-              {item.label[locale]}
+              {homeContent[locale].footer.inquiry}
             </Link>
-          ))}
+          </div>
         </div>
       ) : null}
     </header>
