@@ -1,31 +1,27 @@
 import type { Metadata } from "next";
 import "./globals.css";
-import { AmbientLightFields } from "@/components/AmbientLightFields";
-import { Footer } from "@/components/Footer";
 import { LanguageProvider } from "@/components/LanguageProvider";
-import { Navigation } from "@/components/Navigation";
+import { SiteChrome } from "@/components/SiteChrome";
 
 export const metadata: Metadata = {
   other: {
     google: "notranslate"
   },
-  title: "ZD Bespoke Lighting | Luxury Custom Lighting for Hotels & Villas",
+  title: "crisistb7#4719 | Valorant Personal Brand",
   description:
-    "ZD Bespoke Lighting provides luxury bespoke lighting design and manufacturing solutions for hotels, villas, resorts, banquet halls and architectural projects worldwide.",
+    "A restrained Valorant personal brand homepage with a full-screen video opening, editable rank UI and live stats panels.",
   keywords: [
-    "luxury lighting",
-    "bespoke lighting",
-    "custom chandelier",
-    "hotel lighting",
-    "villa lighting",
-    "architectural lighting",
-    "hospitality lighting",
-    "Zhongshan lighting factory"
+    "Valorant",
+    "personal brand",
+    "crisistb7",
+    "player portfolio",
+    "rank profile",
+    "live stats"
   ],
   openGraph: {
-    title: "ZD Bespoke Lighting | Luxury Custom Lighting for Hotels & Villas",
+    title: "crisistb7#4719 | Valorant Personal Brand",
     description:
-      "Luxury bespoke lighting design and manufacturing solutions for hotels, villas, resorts, banquet halls and architectural projects worldwide.",
+      "A restrained Valorant personal brand homepage with video, rank UI and live stats overlays.",
     type: "website"
   }
 };
@@ -35,11 +31,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     <html lang="en" className="notranslate" translate="no">
       <body className="font-sans antialiased">
         <LanguageProvider>
-          <AmbientLightFields />
-          <Navigation />
-          <div className="relative z-10">{children}</div>
-          <div className="relative z-10"><Footer /></div>
-          <div className="grain" aria-hidden="true" />
+          <SiteChrome>{children}</SiteChrome>
         </LanguageProvider>
       </body>
     </html>

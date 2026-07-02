@@ -21,8 +21,11 @@ outputs/
 *.mp4
 *.mov
 *.webm
+*.zip
 !public/zd-site/**/*.mp4
 !public/zd-site/**/*.webm
+!public/videos/**/*.mp4
+!public/valorant/**/*.mp4
 *.pptx
 *.docx
 watermark_*.png
@@ -34,3 +37,12 @@ whatsapp_*_render/
 # Local tooling/dependency caches
 pydeps/
 .tools/
+
+# Video generation workspaces and local binaries
+ffmpeg/
+frames_*/
+production_video_16x9_work/
+factory_highlight_30s_work/
+subtitle_check/
+chengdu_panda_hyperframes/assets/
+chengdu_panda_hyperframes/*.mp4

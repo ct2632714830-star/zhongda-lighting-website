@@ -1,0 +1,29 @@
+"use client";
+
+import { motion } from "framer-motion";
+import { StatCard } from "@/components/profile/StatCard";
+import { performance } from "@/components/profile/profileData";
+import { fadeUp, sectionViewport } from "@/components/profile/motion";
+
+export function PerformanceSection() {
+  return (
+    <motion.section
+      id="stats"
+      initial="hidden"
+      whileInView="show"
+      viewport={sectionViewport}
+      variants={{ show: { transition: { staggerChildren: 0.08 } } }}
+      className="my-5 rounded-[28px] border border-white/70 bg-white/35 p-6 shadow-[0_20px_70px_rgba(36,45,55,0.07)] backdrop-blur-xl sm:p-10"
+    >
+      <motion.div variants={fadeUp}>
+        <p className="text-xs font-semibold uppercase tracking-[0.24em] text-[#1267c8]">Performance Data</p>
+        <h2 className="mt-3 text-3xl font-semibold tracking-normal sm:text-5xl">Numbers, reduced to what matters.</h2>
+      </motion.div>
+      <motion.div variants={fadeUp} className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-6">
+        {performance.map((stat) => (
+          <StatCard key={stat.label} {...stat} />
+        ))}
+      </motion.div>
+    </motion.section>
+  );
+}
