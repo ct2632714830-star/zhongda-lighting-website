@@ -35,10 +35,15 @@ export function Footer() {
       </div>
       <div className="container-lux mt-10 border-t border-black/10 pt-6">
         <div className="flex flex-col items-start gap-3 text-sm text-zinc-500">
-          <p className="inline-flex items-center gap-2">
+          <a
+            href="https://www.instagram.com/zd_bespoke_lighting/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-2 transition hover:text-zinc-950"
+          >
             <Instagram className="size-4 text-champagne" />
-            <span>Instagram: zd_lighting</span>
-          </p>
+            <span>Instagram: @zd_bespoke_lighting</span>
+          </a>
           <p className="inline-flex items-center gap-2">
             <Facebook className="size-4 text-champagne" />
             <span>Facebook: ZD Bespoke Lighting</span>

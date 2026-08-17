@@ -25,7 +25,7 @@ export function Contact() {
           </div>
           <div className="mt-9 flex flex-col gap-4 sm:flex-row">
             <LuxuryButton href="https://wa.me/8619047186703">{t.contact.whatsappButton}</LuxuryButton>
-            <a href="https://instagram.com/" className="inline-flex h-12 w-12 items-center justify-center border border-white/15 text-ivory/70 transition hover:border-champagne/60 hover:text-champagne" aria-label="Instagram">
+            <a href="https://www.instagram.com/zd_bespoke_lighting/" target="_blank" rel="noopener noreferrer" className="inline-flex h-12 w-12 items-center justify-center border border-white/15 text-ivory/70 transition hover:border-champagne/60 hover:text-champagne" aria-label="Instagram @zd_bespoke_lighting">
               <Instagram className="size-5" />
             </a>
             <a href="https://facebook.com/" className="inline-flex h-12 w-12 items-center justify-center border border-white/15 text-ivory/70 transition hover:border-champagne/60 hover:text-champagne" aria-label="Facebook">
