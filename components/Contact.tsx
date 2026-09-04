@@ -28,7 +28,7 @@ export function Contact() {
             <a href="https://www.instagram.com/zd_bespoke_lighting/" target="_blank" rel="noopener noreferrer" className="inline-flex h-12 w-12 items-center justify-center border border-white/15 text-ivory/70 transition hover:border-champagne/60 hover:text-champagne" aria-label="Instagram @zd_bespoke_lighting">
               <Instagram className="size-5" />
             </a>
-            <a href="https://facebook.com/" className="inline-flex h-12 w-12 items-center justify-center border border-white/15 text-ivory/70 transition hover:border-champagne/60 hover:text-champagne" aria-label="Facebook">
+            <a href="https://www.facebook.com/profile.php?id=61589420906827" target="_blank" rel="noopener noreferrer" className="inline-flex h-12 w-12 items-center justify-center border border-white/15 text-ivory/70 transition hover:border-champagne/60 hover:text-champagne" aria-label="Facebook">
               <Facebook className="size-5" />
             </a>
           </div>

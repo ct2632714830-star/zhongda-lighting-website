@@ -28,7 +28,7 @@ export const site = {
     phone: "+86 190 4718 6703",
     whatsapp: "https://wa.me/8619047186703",
     instagram: "https://instagram.com/",
-    facebook: "https://facebook.com/"
+    facebook: "https://www.facebook.com/profile.php?id=61589420906827"
   },
   inquiryForm: {
     fields: ["Name", "Company", "Country", "Project Type", "WhatsApp / Email"],

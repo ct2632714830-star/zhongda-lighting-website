@@ -44,10 +44,15 @@ export function Footer() {
             <Instagram className="size-4 text-champagne" />
             <span>Instagram: @zd_bespoke_lighting</span>
           </a>
-          <p className="inline-flex items-center gap-2">
+          <a
+            href="https://www.facebook.com/profile.php?id=61589420906827"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-2 transition hover:text-zinc-950"
+          >
             <Facebook className="size-4 text-champagne" />
             <span>Facebook: ZD Bespoke Lighting</span>
-          </p>
+          </a>
         </div>
         <p className="mt-5 text-xs text-zinc-400">{t.footer.copyright}</p>
       </div>
