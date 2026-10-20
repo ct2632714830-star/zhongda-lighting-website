@@ -6,6 +6,7 @@ import { LanguageProvider } from "@/components/LanguageProvider";
 import { Navigation } from "@/components/Navigation";
 
 export const metadata: Metadata = {
+  metadataBase: new URL('https://www.zdbespokelighting.com'),
   other: {
     google: "notranslate"
   },
